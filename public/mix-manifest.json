@@ -1,0 +1,16 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/css/shop/font-awesome.css": "/css/shop/font-awesome.css",
+    "/css/shop/responsive.css": "/css/shop/responsive.css",
+    "/css/shop/animate.css": "/css/shop/animate.css",
+    "/css/shop/main.css": "/css/shop/main.css",
+    "/css/shop/price-range.css": "/css/shop/price-range.css",
+    "/css/shop/bootstrap.css": "/css/shop/bootstrap.css",
+    "/js/shop/jquery.js": "/js/shop/jquery.js",
+    "/js/shop/jquery.scrollUp.min.js": "/js/shop/jquery.scrollUp.min.js",
+    "/js/shop/html5shiv.js": "/js/shop/html5shiv.js",
+    "/js/shop/gmaps.js": "/js/shop/gmaps.js",
+    "/js/shop/contact.js": "/js/shop/contact.js",
+    "/js/shop/bootstrap.min.js": "/js/shop/bootstrap.min.js"
+}

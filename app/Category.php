@@ -23,7 +23,7 @@ class Category extends Model
      */
     public function products()
     {
-        return $this->belongsTo('App\Product:class','category_id');
+        return $this->belongsTo('App\Product:class', 'category_id');
     }
 
     /**
@@ -32,13 +32,9 @@ class Category extends Model
      */
     public static function getCategory()
     {
-        $categoryArray = [];
         $allCategory = Category::select(['id', 'name'])->orderBy('id', 'desc')->get();
 
-        foreach ($allCategory as $v) {
-            $categoryArray[] = $v->attributes;
-        }
-        return $categoryArray;
+        return ($allCategory) ? $allCategory : null;
     }
 
     /**

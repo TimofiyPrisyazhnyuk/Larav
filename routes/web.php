@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/{id?}', ['uses' => 'Shop\IndexController@Index', 'as' => 'index']);
+Route::get('/{id?}', ['uses' => 'Shop\IndexController@index', 'as' => 'index']);
 /**
  *
  */

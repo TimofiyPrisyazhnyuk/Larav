@@ -23,7 +23,7 @@ class Category extends Model
      */
     public function products()
     {
-        return $this->belongsTo('App\Product');
+        return $this->belongsTo('App\Product:class','category_id');
     }
 
     /**

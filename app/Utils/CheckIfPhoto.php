@@ -2,7 +2,7 @@
 
 namespace App;
 
-class Check_If_Photo
+class CheckIfPhoto
 {
 
     /**

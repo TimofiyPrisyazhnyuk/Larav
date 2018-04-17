@@ -18,7 +18,7 @@ class CartOrder extends Model
      */
     public function orderCartProduct()
     {
-        return $this->belongsTo('App\Order_cart_product');
+        return $this->belongsTo('App\OrderCartProduct:class');
     }
 
     /**
@@ -34,10 +34,8 @@ class CartOrder extends Model
             foreach ($cartOrders as $key => $val) {
                 $cart[] = $val->attributes;
             }
-
             return $cart;
         }
-
         return null;
     }
 
@@ -52,7 +50,6 @@ class CartOrder extends Model
             foreach ($column->fillable as $key => $val) {
                 $columnName[] = $val;
             }
-
             return $columnName;
         }
     }

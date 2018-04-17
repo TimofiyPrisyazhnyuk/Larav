@@ -33,10 +33,10 @@
                         <tr>
                             <th scope="row" bgcolor="#fff8dc">{{ $loop->iteration }}</th>
                             @foreach($columnName as $k => $v)
-                                <td bgcolor="#ffe4c4">
-                                    <strong style="word-wrap: break-word;">
-                                            {{ $val->$v }}
-                                    </strong>
+                                <td bgcolor="#ffe4c4" style="max-width:350px; word-wrap:break-word;">
+                                    <b>
+                                        {{ $val->$v }}
+                                    </b>
                                 </td>
                             @endforeach
                             <td bgcolor="#e9967a" width="150px">

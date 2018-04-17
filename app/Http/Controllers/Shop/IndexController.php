@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Category;
-use App\Check_If_Photo;
+use App\CheckIfPhoto;
 use App\Comment;
 use App\Http\Controllers\Controller;
+use App\OrderCartProduct;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,7 @@ class IndexController extends Controller
      * @param null $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
      */
-    public function Index($id = null)
+    public function index($id = null)
     {
         if (view()->exists('shop.index')) {
             $category = $this->getCategory();
@@ -65,7 +66,7 @@ class IndexController extends Controller
     {
         $productToId = Product::getProductToId($id);
         if (isset($productToId)) {
-            $photoPatch = Check_If_Photo::CheckIfPhoto($productToId);
+            $photoPatch = CheckIfPhoto::CheckIfPhoto($productToId);
             $commentsToId = Comment::getCommentsToId($id);
 
             return view('shop.productShop', [

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Order_cart_product extends Model
+class OrderCartProduct extends Model
 {
 
     protected $table = 'order_cart_product';
@@ -18,7 +18,7 @@ class Order_cart_product extends Model
      */
     public function cartOrders()
     {
-        return $this->hasMany('App\CartOrders', 'cart_id');
+        return $this->hasMany('App\CartOrders:class', 'cart_id');
     }
 
     /**
@@ -30,7 +30,7 @@ class Order_cart_product extends Model
     {
         if (isset($cartId)) {
             foreach ($cart->items as $item) {
-                Order_cart_product::create([
+                OrderCartProduct::create([
                     'cart_id' => $cartId,
                     'product_id' => $item['item']->id,
                     'price' => $item['price'],
@@ -48,7 +48,7 @@ class Order_cart_product extends Model
      */
     public function getOrderProductCarts()
     {
-        $orderProduct = Order_cart_product::select($this->fillable)->get();
+        $orderProduct = OrderCartProduct::select($this->fillable)->get();
 
         if ($orderProduct != null) {
             return $orderProduct;

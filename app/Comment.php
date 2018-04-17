@@ -17,7 +17,7 @@ class Comment extends Model
 
     public function products()
     {
-        return $this->belongsTo('App\Product', 'id');
+        return $this->belongsTo('App\Product:class', 'id');
     }
 
     /**

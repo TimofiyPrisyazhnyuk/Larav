@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Shop;
 use App\Cart;
 use App\CartOrder;
 use App\Http\Controllers\Controller;
-use App\Order_cart_product;
+use App\OrderCartProduct;
 use App\Product;
 use Illuminate\Http\Request;
 use Session;
@@ -54,6 +54,7 @@ class CartController extends Controller
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->add($products, $products->id);
+
         $request->session()->put('cart', $cart);
 
         return redirect()->back();
@@ -145,7 +146,7 @@ class CartController extends Controller
             'totalQty' => $cart->totalQty,
             'totalPrice' => $cart->totalPrice,
         ]);
-        $saveOrderProduct = Order_cart_product::saveOrderCartProduct($cart, $saveCart->id);
+        $saveOrderProduct = OrderCartProduct::saveOrderCartProduct($cart, $saveCart->id);
 
         return ($saveOrderProduct != false) ? true : false;
 

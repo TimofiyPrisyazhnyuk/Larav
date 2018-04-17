@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\CartOrder;
 use App\Http\Controllers\Controller;
-use App\Order_cart_product;
+use App\OrderCartProduct;
 
 class HomeCartController extends Controller
 {
@@ -15,7 +15,7 @@ class HomeCartController extends Controller
     public function cart()
     {
         $cartOrders = new CartOrder;
-        $orderProdCart = new Order_cart_product;
+        $orderProdCart = new OrderCartProduct;
 
         if ($cartOrders) {
             return view('home.cart.cart', [

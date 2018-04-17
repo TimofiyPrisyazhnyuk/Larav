@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
-use App\Check_If_Photo;
+use App\CheckIfPhoto;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Auth;
@@ -89,7 +89,7 @@ class HomeProductController extends Controller
     {
         $productToId = Product::getProductToId($id);
         if ($productToId != null) {
-            $photoPatch = Check_If_Photo::CheckIfPhoto($productToId);
+            $photoPatch = CheckIfPhoto::CheckIfPhoto($productToId);
 
             return view('home.products.present', [
                 'id' => $id,
@@ -109,7 +109,7 @@ class HomeProductController extends Controller
     public function updateShow($id)
     {
         $getUpdatesData = Product::getProductToId($id);
-        $photoPatch = Check_If_Photo::CheckIfPhoto($getUpdatesData);
+        $photoPatch = CheckIfPhoto::CheckIfPhoto($getUpdatesData);
         $user_id = Product::getIdAllUsers();
         $category_id = Product::getIdAllCategories();
 

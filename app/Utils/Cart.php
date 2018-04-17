@@ -14,7 +14,6 @@ class Cart
      * Cart constructor.
      * @param $oldCart
      */
-
     public function __construct($oldCart)
     {
         if ($oldCart) {

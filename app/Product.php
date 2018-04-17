@@ -9,8 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
 
-    protected $table    = 'products';
-    protected $fillable = [ 'id', 'name', 'text', 'price', 'currency', 'image', 'category_id', 'user_id' ];
+    protected $table = 'products';
+
+    protected $fillable = ['id', 'name', 'text', 'price', 'currency', 'image', 'category_id', 'user_id'];
 
 
     /**
@@ -45,15 +46,13 @@ class Product extends Model
     public static function getColumnNameProducts()
     {
         $columnName = [];
-        $column     = Product::first();
+        $column = Product::first();
         if ($column != null) {
             foreach ($column->fillable as $key => $val) {
                 $columnName[] = $val;
             }
-
             return $columnName;
         }
-
         return null;
     }
 
@@ -72,7 +71,6 @@ class Product extends Model
             $getProducts = Product::orderBy('id', 'desc')
                 ->get();
         }
-
         return $getProducts;
     }
 
@@ -82,14 +80,13 @@ class Product extends Model
      */
     public static function getRecommendProducts()
     {
-        $products    = [];
+        $products = [];
         $getProducts = Product::orderBy('price', 'asc')
             ->limit(3)
             ->get();
         foreach ($getProducts as $key => $product) {
             $products[] = $product->attributes;
         }
-
         return $products;
     }
 
@@ -100,7 +97,7 @@ class Product extends Model
     public static function getIdAllCategories()
     {
         $category_id = [];
-        $category    = Category::select('id')
+        $category = Category::select('id')
             ->orderBy('id', 'desc')
             ->get();
 
@@ -109,7 +106,6 @@ class Product extends Model
                 $category_id[] = $it;
             }
         }
-
         return $category_id;
     }
 
@@ -120,13 +116,12 @@ class Product extends Model
     public static function getIdAllUsers()
     {
         $user_id = [];
-        $users   = Auth::user()->getArrayableAttributes();
+        $users = Auth::user()->getArrayableAttributes();
         foreach ($users as $user => $item) {
             if ($user == "id") {
-                $user_id[ 'id' ] = $item;
+                $user_id['id'] = $item;
             }
         }
-
         return $user_id;
     }
 
@@ -141,7 +136,6 @@ class Product extends Model
         if ($idProduct != null) {
             return $idProduct;
         }
-
         return false;
     }
 

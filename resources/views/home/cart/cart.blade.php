@@ -39,13 +39,9 @@
                         @foreach($cartOrders as $order)
                             <tr>
                                 @foreach($order as $item)
-                                    <td>
-                                        <small class="text-secondary">
-                                            @if(strlen($item) >= 17)
-                                                {{ mb_strimwidth($item, 0, 14, "...")}}
-                                            @else
-                                                {{ $item }}
-                                            @endif
+                                    <td width="200px">
+                                        <small class="text-secondary" style="word-wrap: break-word;">
+                                            {{ $item }}
                                         </small>
                                     </td>
                                 @endforeach

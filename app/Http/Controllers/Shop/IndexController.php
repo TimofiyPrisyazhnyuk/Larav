@@ -16,7 +16,7 @@ class IndexController extends Controller
      * @var array
      */
     public $rules = [
-        'name'    => 'required|max:50|string',
+        'name' => 'required|max:50|string',
         'comment' => 'required|string|max:255|min:7',
         'finally' => 'required',
     ];
@@ -31,18 +31,17 @@ class IndexController extends Controller
     public function Index($id = null)
     {
         if (view()->exists('shop.index')) {
-            $category          = $this->getCategory();
+            $category = $this->getCategory();
             $recommendProducts = Product::getRecommendProducts();
 
             $products = (isset($id)) ? Product::getFullProducts($id) : Product::getFullProducts();
 
             return view('shop.index', [
-                'category'          => $category,
-                'products'          => $products,
+                'category' => $category,
+                'products' => $products,
                 'recommendProducts' => $recommendProducts,
             ]);
         }
-
         return abort(404);
     }
 
@@ -66,14 +65,14 @@ class IndexController extends Controller
     {
         $productToId = Product::getProductToId($id);
         if (isset($productToId)) {
-            $photoPatch   = Check_If_Photo::CheckIfPhoto($productToId);
+            $photoPatch = Check_If_Photo::CheckIfPhoto($productToId);
             $commentsToId = Comment::getCommentsToId($id);
 
             return view('shop.productShop', [
-                'productToId'  => $productToId,
+                'productToId' => $productToId,
                 'commentsToId' => $commentsToId,
-                'photoPatch'   => $photoPatch,
-                'id'           => $id,
+                'photoPatch' => $photoPatch,
+                'id' => $id,
             ]);
         }
 
@@ -83,25 +82,24 @@ class IndexController extends Controller
     /**
      * @param Request $request
      * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function comments(Request $request, $id)
     {
-        $data         = $request->all();
+        $data = $request->all();
         $validComment = $this->validate($request, $this->rules);
         if ($validComment) {
             Comment::create([
-                'name'       => $data[ 'name' ],
-                'comment'    => $data[ 'comment' ],
-                'finally'    => $data[ 'finally' ],
+                'name' => $data['name'],
+                'comment' => $data['comment'],
+                'finally' => $data['finally'],
                 'product_id' => $id,
                 'assessment' => ' ',
             ]);
-
             return redirect()->back()
                 ->with('messageSuccess', 'Comment is Add!')
                 ->withInput();
         }
-
         return abort(404);
     }
 

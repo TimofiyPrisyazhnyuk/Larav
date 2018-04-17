@@ -16,10 +16,8 @@ class Check_If_Photo
             if (!file_exists($photoPatch)) {
                 return false;
             }
-
             return $photoPatch;
         }
-
         return false;
     }
 

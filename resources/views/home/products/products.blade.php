@@ -34,12 +34,8 @@
                             <th scope="row" bgcolor="#fff8dc">{{ $loop->iteration }}</th>
                             @foreach($columnName as $k => $v)
                                 <td bgcolor="#ffe4c4">
-                                    <strong>
-                                        @if(strlen($val->$v) >= 12)
-                                            {{ mb_strimwidth($val->$v, 0, 9, '...') }}
-                                        @else
+                                    <strong style="word-wrap: break-word;">
                                             {{ $val->$v }}
-                                        @endif
                                     </strong>
                                 </td>
                             @endforeach

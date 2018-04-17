@@ -12,7 +12,6 @@ class UploadImageController extends Controller
     /**
      * @var array
      */
-
     public $rules = [
         'file' => 'image:jpg,png|max:5000|dimensions:min_width=350,min_height=350',
     ];
@@ -20,7 +19,6 @@ class UploadImageController extends Controller
     /**
      * @var string
      */
-
     public $uploadPath = 'uploads/images';
 
 
@@ -29,7 +27,6 @@ class UploadImageController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-
     public function upload(Request $request, $id)
     {
         $validate = $this->validate($request, $this->rules);
@@ -40,7 +37,6 @@ class UploadImageController extends Controller
                     ->with('messageSuccess', 'Photo add to this products');
             }
         }
-
         return redirect()->back()
             ->with('messageWarning', 'Your file exist ');
     }
@@ -52,7 +48,7 @@ class UploadImageController extends Controller
      */
     public function savePhoto(Request $request, $id)
     {
-        $file      = $request->file('file');
+        $file = $request->file('file');
         $PhotoName = time() . $file->getClientOriginalName();
 
         if ($file->move($this->uploadPath, $PhotoName)) {
@@ -61,10 +57,8 @@ class UploadImageController extends Controller
             $saveToDb->where('id', $id)->update([
                 'image' => $PhotoName,
             ]);
-
             return true;
         }
-
         return false;
 
     }

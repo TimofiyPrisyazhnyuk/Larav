@@ -99,7 +99,7 @@
 
                 @include('layouts.errors')
 
-                <form role="form" action="{{ url('/product/comments/' . $productToId['id'] ) }}" method="post"
+                <form role="form" action="{{ url('/product/comments/' . $productToId['id']) }}" method="post"
                       class="col-md-5">
                     @csrf
                     <div class="form-group">
@@ -144,7 +144,7 @@
                                                     </h3>
                                                     <small class="text-secondary pull-right">{{ $value->created_at }}</small>
                                                 </div>
-                                                <div class="well">
+                                                <div class="well" style="word-wrap: break-word;">
                                                     <p>{{ $value->comment }}</p>
                                                 </div>
                                                 <div class="alert alert-warning">

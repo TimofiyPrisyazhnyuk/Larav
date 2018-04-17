@@ -16,13 +16,13 @@ class HomeProductController extends Controller
      * @var array
      */
     public $rules = [
-        'name'        => 'required|string|max:100|min:3',
-        'text'        => 'required|string|min:3',
-        'image'       => 'string|default:null',
-        'price'       => 'required|numeric',
-        'currency'    => 'required|string|max:21',
+        'name' => 'required|string|max:100|min:3',
+        'text' => 'required|string|min:3',
+        'image' => 'string|default:null',
+        'price' => 'required|numeric',
+        'currency' => 'required|string|max:21',
         'category_id' => 'required|int',
-        'user_id'     => 'required|int',
+        'user_id' => 'required|int',
     ];
 
     /**
@@ -31,11 +31,11 @@ class HomeProductController extends Controller
     public function index()
     {
         $columnName = Product::getColumnNameProducts();
-        $products   = Product::getFullProducts();
+        $products = Product::getFullProducts();
 
         return view('home.products.products', [
             'columnName' => $columnName,
-            'products'   => $products,
+            'products' => $products,
         ]);
 
     }
@@ -45,40 +45,39 @@ class HomeProductController extends Controller
      */
     public function createProducts()
     {
-        $user_id     = Product::getIdAllUsers();
+        $user_id = Product::getIdAllUsers();
         $category_id = Product::getIdAllCategories();
-        $message     = [
+        $message = [
             'category_id' => $category_id,
-            'user_id'     => $user_id,
+            'user_id' => $user_id,
         ];
-
         return view('home.products.create', $message);
     }
 
     /**
      *  Create new product
      * validate + save to db
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|void
      */
     public function create(Request $request)
     {
-        $data      = $request->all();
+        $data = $request->all();
         $validated = $this->validate($request, $this->rules);
-        $user      = Auth::user();
+        $user = Auth::user();
 
         if ($validated && $user) {
             $user->products()->create([
-                'name'        => $data[ 'name' ],
-                'text'        => $data[ 'text' ],
-                'price'       => $data[ 'price' ],
-                'currency'    => $data[ 'currency' ],
-                'category_id' => $data[ 'category_id' ],
-                'user_id'     => $data[ 'user_id' ],
+                'name' => $data['name'],
+                'text' => $data['text'],
+                'price' => $data['price'],
+                'currency' => $data['currency'],
+                'category_id' => $data['category_id'],
+                'user_id' => $data['user_id'],
             ]);
-
             return redirect()->back()
                 ->with('messageSuccess', 'Success Data is Add');
         }
-
         return abort(404);
     }
 
@@ -93,12 +92,11 @@ class HomeProductController extends Controller
             $photoPatch = Check_If_Photo::CheckIfPhoto($productToId);
 
             return view('home.products.present', [
-                'id'          => $id,
+                'id' => $id,
                 'productToId' => $productToId,
-                'photoPatch'  => $photoPatch,
+                'photoPatch' => $photoPatch,
             ]);
         }
-
         return abort(404);
 
     }
@@ -111,20 +109,18 @@ class HomeProductController extends Controller
     public function updateShow($id)
     {
         $getUpdatesData = Product::getProductToId($id);
-        $photoPatch     = Check_If_Photo::CheckIfPhoto($getUpdatesData);
-        $user_id        = Product::getIdAllUsers();
-        $category_id    = Product::getIdAllCategories();
+        $photoPatch = Check_If_Photo::CheckIfPhoto($getUpdatesData);
+        $user_id = Product::getIdAllUsers();
+        $category_id = Product::getIdAllCategories();
 
         $message = [
-            'id'             => $id,
+            'id' => $id,
             'getUpdatesData' => $getUpdatesData,
-            'category_id'    => $category_id,
-            'user_id'        => $user_id,
-            'photoPatch'     => $photoPatch,
+            'category_id' => $category_id,
+            'user_id' => $user_id,
+            'photoPatch' => $photoPatch,
         ];
-
         return view('home.products.update', $message);
-
     }
 
     /**
@@ -134,17 +130,17 @@ class HomeProductController extends Controller
      */
     public function saveUpdate(Request $request, $id)
     {
-        $data      = $request->all();
+        $data = $request->all();
         $validated = $this->validate($request, $this->rules);
         if ($validated) {
             $update = new Product();
             $update->where('id', $id)->update([
-                'name'        => $data[ 'name' ],
-                'text'        => $data[ 'text' ],
-                'price'       => $data[ 'price' ],
-                'currency'    => $data[ 'currency' ],
-                'category_id' => $data[ 'category_id' ],
-                'user_id'     => $data[ 'user_id' ],
+                'name' => $data['name'],
+                'text' => $data['text'],
+                'price' => $data['price'],
+                'currency' => $data['currency'],
+                'category_id' => $data['category_id'],
+                'user_id' => $data['user_id'],
             ]);
         }
 
@@ -167,7 +163,6 @@ class HomeProductController extends Controller
                 ->route('home_products')
                 ->with('messageSuccess', 'Product deleted');
         }
-
         return redirect()->back()
             ->with('messageWarning', 'Warning : product do not deleted');
     }

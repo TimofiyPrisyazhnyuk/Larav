@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Order_cart_product extends Model
 {
 
-    protected $table    = 'order_cart_product';
+    protected $table = 'order_cart_product';
+
     protected $fillable = [
         'cart_id', 'product_id', 'price', 'quantity',
     ];
@@ -30,16 +31,14 @@ class Order_cart_product extends Model
         if (isset($cartId)) {
             foreach ($cart->items as $item) {
                 Order_cart_product::create([
-                    'cart_id'    => $cartId,
-                    'product_id' => $item[ 'item' ]->id,
-                    'price'      => $item[ 'price' ],
-                    'quantity'   => $item[ 'quantity' ],
+                    'cart_id' => $cartId,
+                    'product_id' => $item['item']->id,
+                    'price' => $item['price'],
+                    'quantity' => $item['quantity'],
                 ]);
             }
-
             return true;
         }
-
         return false;
     }
 
@@ -54,7 +53,6 @@ class Order_cart_product extends Model
         if ($orderProduct != null) {
             return $orderProduct;
         }
-
         return null;
     }
 }

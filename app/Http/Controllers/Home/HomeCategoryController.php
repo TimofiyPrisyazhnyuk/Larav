@@ -21,10 +21,10 @@ class HomeCategoryController extends Controller
     public function index()
     {
         $allCategory = Category::getCategory();
-        $columnName  = Category::getColumnNameCategory();
+        $columnName = Category::getColumnNameCategory();
 
         return view('home.category.category', [
-            'category'   => $allCategory,
+            'category' => $allCategory,
             'columnName' => $columnName,
         ]);
     }
@@ -36,15 +36,16 @@ class HomeCategoryController extends Controller
 
     public function create(Request $request)
     {
-        $data     = $request->all();
+        $data = $request->all();
         $validate = $this->validate($request, $this->rules);
         if ($validate) {
-            Category::create([ 'name' => $data[ 'name' ] ]);
+            Category::create([
+                'name' => $data['name'],
+            ]);
 
             return redirect()->back()
                 ->with('messageSuccess', 'Created New Category');
         }
-
         return abort(404);
     }
 
@@ -55,15 +56,14 @@ class HomeCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data     = $request->all();
+        $data = $request->all();
         $validate = $this->validate($request, $this->rules);
         if ($validate) {
-            Category::find($id)->update([ 'name' => $data[ 'name' ] ]);
+            Category::find($id)->update(['name' => $data['name']]);
 
             return redirect()->back()
                 ->with('messageSuccess', 'Category is Update!');
         }
-
         return abort(404);
     }
 
@@ -81,7 +81,6 @@ class HomeCategoryController extends Controller
                     ->with('messageSuccess', 'Category is Deleted!');
             }
         }
-
         return abort(404);
     }
 

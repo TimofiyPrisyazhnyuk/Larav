@@ -14,14 +14,14 @@ class HomeCartController extends Controller
      */
     public function cart()
     {
-        $cartOrders    = new CartOrder;
+        $cartOrders = new CartOrder;
         $orderProdCart = new Order_cart_product;
 
         if ($cartOrders) {
             return view('home.cart.cart', [
-                'cartOrders'     => $cartOrders->getCartOrders(),
+                'cartOrders' => $cartOrders->getCartOrders(),
                 'cartColumnName' => $cartOrders->getCartColumnName(),
-                'orderProduct'   => $orderProdCart->getOrderProductCarts(),
+                'orderProduct' => $orderProdCart->getOrderProductCarts(),
 
             ]);
         }
@@ -43,7 +43,6 @@ class HomeCartController extends Controller
             return redirect()->route('home_cart')
                 ->with('messageSuccess', 'This Order deleted');
         }
-
         return redirect()->route('home_cart')
             ->with('messageWarning', 'Warning');
     }

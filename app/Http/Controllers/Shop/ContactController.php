@@ -15,14 +15,14 @@ class ContactController extends Controller
         if (view()->exists('shop.contact')) {
 
             $messages = [
-                'name'  => 'required|max:2',
+                'name' => 'required|max:2',
                 'email' => 'max:3',
             ];
 
             $validator = Validator::make($request->all(), $messages);
 
             if ($validator->fails()) {
-//                dump($validator->errors()->all());
+                //                dump($validator->errors()->all());
             }
         }
 

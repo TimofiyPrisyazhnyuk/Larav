@@ -80,13 +80,9 @@
                                     {{ $v['id']}}
                                 </div>
                             </td>
-                            <td>
-                                <div class="alert alert-dark">
-                                    @if(strlen($v['name']) >= 24)
-                                        {{ mb_strimwidth($v['name'], 0, 21, '...') }}
-                                    @else
-                                        {{ $v['name'] }}
-                                    @endif
+                            <td width="600px">
+                                <div class="alert alert-dark" style="word-wrap: break-word;">
+                                    {{ $v['name'] }}
                                 </div>
                             </td>
 
@@ -157,7 +153,7 @@
                     @else
                         <tr>
                             <td>
-                                <div class="alert alert-warning"> Not Categories! </div>
+                                <div class="alert alert-warning"> Not Categories!</div>
                             </td>
                         </tr>
                     @endif

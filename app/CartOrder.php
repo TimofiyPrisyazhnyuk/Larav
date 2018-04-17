@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class CartOrder extends Model
 {
 
-    protected $table    = 'cart';
+    protected $table = 'cart';
     protected $fillable = [
         'id', 'name', 'email', 'phoneNumber', 'deliveryMethod', 'city',
         'totalQty', 'totalPrice',
@@ -27,7 +27,7 @@ class CartOrder extends Model
      */
     public function getCartOrders()
     {
-        $cart       = [];
+        $cart = [];
         $cartOrders = CartOrder::select($this->fillable)->get();
 
         if ($cartOrders != null) {
@@ -47,7 +47,7 @@ class CartOrder extends Model
     public function getCartColumnName()
     {
         $columnName = [];
-        $column     = CartOrder::first();
+        $column = CartOrder::first();
         if (isset($column)) {
             foreach ($column->fillable as $key => $val) {
                 $columnName[] = $val;

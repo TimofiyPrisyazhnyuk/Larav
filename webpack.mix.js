@@ -12,6 +12,7 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
+
     .js('resources/assets/js/shop/bootstrap.min.js', 'public/js/shop')
     .js('resources/assets/js/shop/html5shiv.js', 'public/js/shop')
     .js('resources/assets/js/shop/jquery.scrollUp.min.js', 'public/js/shop')

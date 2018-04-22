@@ -13,17 +13,15 @@ let mix = require('laravel-mix');
 
 mix.js('resources/assets/js/app.js', 'public/js')
     .js('resources/assets/js/shop/bootstrap.min.js', 'public/js/shop')
-    .js('resources/assets/js/shop/contact.js', 'public/js/shop')
-    .js('resources/assets/js/shop/gmaps.js', 'public/js/shop')
     .js('resources/assets/js/shop/html5shiv.js', 'public/js/shop')
-    .js('resources/assets/js/shop/jquery.js', 'public/js/shop')
     .js('resources/assets/js/shop/jquery.scrollUp.min.js', 'public/js/shop')
+    .js('resources/assets/js/shop/main.js', 'public/js/shop')
+    .js('resources/assets/js/shop/price-range.js', 'public/js/shop')
 
     /**
      *
      */
     .sass('resources/assets/sass/app.scss', 'public/css')
-    // .sass('resources/assets/sass/shop/scss/font-awesome.scss', 'public/css/shop')
     .sass('resources/assets/sass/shop/responsive.scss', 'public/css/shop')
     .sass('resources/assets/sass/shop/animate.scss', 'public/css/shop')
     .sass('resources/assets/sass/shop/main.scss', 'public/css/shop')

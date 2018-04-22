@@ -292,11 +292,12 @@
         </div>
     </div>
 </footer><!--/Footer-->
-<script src="{{ url('js/shop/jquery.js') }}"></script>
-<script src="{{ url('js/shop/bootstrap.min.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="{{ url('js/shop/jquery.scrollUp.min.js') }}"></script>
+<script src="{{ url('js/shop/bootstrap.min.js') }}"></script>
 <script src="{{ url('js/shop/price-range.js') }}"></script>
-<script src="{{ url('js/shop/jquery.prettyPhoto.js') }}"></script>
 <script src="{{ url('js/shop/main.js') }}"></script>
+<script src="{{ url('js/shop/price-range.js') }}"></script>
+{{--<script src="{{ url('js/shop/contact.js') }}"></script>--}}
 </body>
 </html>

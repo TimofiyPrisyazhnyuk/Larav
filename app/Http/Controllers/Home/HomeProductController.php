@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 class HomeProductController extends Controller
 {
 
-
     /**
      * @var array
      */

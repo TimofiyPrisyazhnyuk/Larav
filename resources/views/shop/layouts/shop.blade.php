@@ -73,11 +73,39 @@
                                         </span>
                                 </a>
                             </li>
-                            <li><a href="#"><i class="fa fa-user"></i> Аккаунт</a></li>
-                            <li><a href="{{ url('/home') }}"><i class="fa fa-lock"></i> Вход</a></li>
+                            <li><a href="{{ url('/home') }}"><i class="fa fa-user"></i> Аккаунт</a></li>
+                            @if(Auth::user())
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                              style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                            @else
+                                <li><a href="{{ url('/home/checkAuth') }}"><i class="fa fa-lock"></i> Вход </a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
+            </div>
+            {{-- Test site mark--}}
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <strong>This site works in a test mode and for educational purposes!</strong>
             </div>
         </div>
     </div><!--/header-middle-->

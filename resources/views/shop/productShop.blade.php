@@ -136,21 +136,22 @@
                                 @if($commentsToId )
                                     @foreach($commentsToId as $comment)
                                         @foreach($comment as $key => $value)
-                                            <div class="page-header col-md-10">
-                                                <div>
-                                                    <h3 class="text-secondary">
-                                                        <b class="text-success">{{ $value->name }}</b>
-                                                    </h3>
-                                                    <small class="text-secondary pull-right">{{ $value->created_at }}</small>
+                                            @if($value->checkAdmin == 1)
+                                                <div class="page-header col-md-10">
+                                                    <div>
+                                                        <h3 class="text-secondary">
+                                                            <b class="text-success">{{ $value->name }}</b>
+                                                        </h3>
+                                                        <small class="text-secondary pull-right">{{ $value->created_at }}</small>
+                                                    </div>
+                                                    <div class="well" style="word-wrap: break-word;">
+                                                        <p>{{ $value->comment }}</p>
+                                                    </div>
+                                                    <div class="alert alert-warning">
+                                                        <p>В целом : {{ $value->finally }}</p>
+                                                    </div>
                                                 </div>
-                                                <div class="well" style="word-wrap: break-word;">
-                                                    <p>{{ $value->comment }}</p>
-                                                </div>
-                                                <div class="alert alert-warning">
-                                                    <p>В целом : {{ $value->finally }}</p>
-                                                </div>
-                                            </div>
-
+                                            @endif
                                         @endforeach
                                     @endforeach
                                 @else

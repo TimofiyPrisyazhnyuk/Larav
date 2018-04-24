@@ -2,12 +2,14 @@
 
 namespace App;
 
+use Auth;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, EntrustUserTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'login', 'password', 'email',
+        'id', 'name', 'login', 'password', 'email',
     ];
 
     /**
@@ -30,20 +32,64 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-
     public function products()
     {
         return $this->hasMany('App\Product');
     }
 
-
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return bool
      */
-    public function roles()
+    public static function getUser()
     {
-        return $this->belongsToMany('App\Role:class', 'role_user', 'user_id', 'role_id');
+        $user = User::where('name', Auth::user()->name)->get();
+        foreach ($user as $us) {
+            return ($us) ? $us : false;
+        }
     }
 
+    /**
+     * @param $id
+     * @return bool
+     */
+    public static function getUserToId($id)
+    {
+        $user = User::where('id', $id)->get();
+        foreach ($user as $us) {
+            return ($us) ? $us : false;
+        }
+    }
+
+    /**
+     * @return array
+     */
+    public static function getColumnNameUser()
+    {
+        $userColumnName = [];
+        $column = User::first();
+        if (isset($column)) {
+            foreach ($column->fillable as $key => $val) {
+                $userColumnName[] = $val;
+            }
+            return $userColumnName;
+        }
+
+    }
+
+    /**
+     * @return array|bool
+     */
+    public static function getAllUsers()
+    {
+        $getUsers = [];
+        $user = User::all();
+        if (isset($user)) {
+            foreach ($user as $us) {
+                $getUsers[] = $us;
+            }
+            return $getUsers;
+        }
+        return false;
+    }
 
 }

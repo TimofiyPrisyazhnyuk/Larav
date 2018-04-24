@@ -1,5 +1,7 @@
 <?php
 
+use App\User;
+
 return [
 
     /*
@@ -64,16 +66,23 @@ return [
     |
     */
 
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\User::class,
-        ],
+//    'providers' => [
+//        'users' => [
+//            'driver' => 'eloquent',
+//            'model' => App\User::class,
+//        ],
 
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+//    ],
+    'providers' => [
+        'users' => array(
+            'driver' => 'eloquent',
+            'model' => User::class,
+            'table' => 'users',
+        ),
     ],
 
     /*
@@ -100,3 +109,4 @@ return [
     ],
 
 ];
+

@@ -6,7 +6,6 @@ use App\Category;
 use App\CheckIfPhoto;
 use App\Comment;
 use App\Http\Controllers\Controller;
-use App\OrderCartProduct;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -103,7 +102,6 @@ class IndexController extends Controller
         }
         return abort(404);
     }
-
 
 }
 

@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
 
+    /**
+     * @var string
+     */
     protected $table = 'comments';
-
+    /**
+     * @var array
+     */
     protected $fillable = ['id', 'name', 'comment', 'assessment', 'finally', 'product_id', 'checkAdmin'];
 
     /**

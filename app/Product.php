@@ -9,10 +9,15 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
 
+    /**
+     * @var string
+     */
     protected $table = 'products';
 
+    /**
+     * @var array
+     */
     protected $fillable = ['id', 'name', 'text', 'price', 'currency', 'image', 'category_id', 'user_id'];
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

@@ -7,8 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class OrderCartProduct extends Model
 {
 
+    /**
+     * @var string
+     */
     protected $table = 'order_cart_product';
 
+    /**
+     * @var array
+     */
     protected $fillable = [
         'cart_id', 'product_id', 'price', 'quantity',
     ];

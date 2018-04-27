@@ -31,7 +31,6 @@ class IndexController extends Controller
     {
         if (view()->exists('shop.index')) {
             $products = new Product();
-
             if ($search = $request->search) {
                 $getProducts = $products->searchProduct($search);
             } else {
@@ -97,6 +96,7 @@ class IndexController extends Controller
             'assessment' => ' ',
         ]);
         if ($save) {
+
             return redirect()->back()
                 ->with('messageSuccess', 'Comment soon show to this page.')
                 ->withInput();

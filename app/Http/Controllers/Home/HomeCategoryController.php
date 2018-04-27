@@ -15,9 +15,9 @@ class HomeCategoryController extends Controller
     ];
 
     /**
+     * Show
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-
     public function index()
     {
         $allCategory = Category::getCategory();
@@ -37,11 +37,12 @@ class HomeCategoryController extends Controller
     public function create(Request $request)
     {
         $data = $request->all();
-        $validate = $this->validate($request, $this->rules);
-        if ($validate) {
-            Category::create([
-                'name' => $data['name'],
-            ]);
+        $this->validate($request, $this->rules);
+
+        $create = Category::create([
+            'name' => $data['name'],
+        ]);
+        if ($create) {
 
             return redirect()->back()
                 ->with('messageSuccess', 'Created New Category');
@@ -54,12 +55,13 @@ class HomeCategoryController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse|void
      */
-    public function update(Request $request, $id)
+    public
+    function update(Request $request, $id)
     {
         $data = $request->all();
-        $validate = $this->validate($request, $this->rules);
-        if ($validate) {
-            Category::find($id)->update(['name' => $data['name']]);
+        $this->validate($request, $this->rules);
+        $update = Category::find($id)->update(['name' => $data['name']]);
+        if ($update) {
 
             return redirect()->back()
                 ->with('messageSuccess', 'Category is Update!');
@@ -68,15 +70,17 @@ class HomeCategoryController extends Controller
     }
 
     /**
-     * @param Request $request
      * @param $id
      * @return \Illuminate\Http\RedirectResponse|void
+     * @internal param Request $request
      */
-    public function delete(Request $request, $id)
+    public
+    function delete( $id)
     {
         if (Auth::user()) {
             $deleted = Category::find($id)->delete();
             if ($deleted) {
+
                 return redirect()->back()
                     ->with('messageSuccess', 'Category is Deleted!');
             }

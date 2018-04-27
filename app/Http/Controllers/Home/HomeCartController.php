@@ -10,19 +10,19 @@ class HomeCartController extends Controller
 {
 
     /**
+     * Show Admin home cart table and cart-control panel
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function cart()
     {
         $cartOrders = new CartOrder;
         $orderProdCart = new OrderCartProduct;
-
         if ($cartOrders) {
+
             return view('home.cart.cart', [
                 'cartOrders' => $cartOrders->getCartOrders(),
                 'cartColumnName' => $cartOrders->getCartColumnName(),
                 'orderProduct' => $orderProdCart->getOrderProductCarts(),
-
             ]);
         }
 

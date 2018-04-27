@@ -39,22 +39,24 @@
                         @ability('admin,manager', 'create-product,edit-user')
                         <div class="alert alert-secondary"><h3 class="text-danger">Control Panel:</h3></div>
                         <div class="alert">
-                            <a href={{ url('/home/products') }}>
-                                <button type="button" class="btn btn-primary btn-lg">Products:</button>
-                            </a>
-                            <a href="{{ url('/home/category') }}">
-                                <button type="button" class="btn btn-warning btn-lg">Category</button>
-                            </a>
-                            <a href="{{ url('/home/cart') }}">
-                                <button type="button" class="btn btn-dark btn-lg">Cart</button>
-                            </a>
-                            @role('admin')
-                            <a href="{{ url('/home/comment') }}">
-                                <button type="button" class="btn btn-secondary btn-lg">Comment</button>
-                            </a>
-                            <a href="{{ url('/home/users') }}">
-                                <button type="button" class="btn btn-info btn-lg">Users</button>
-                            </a>
+                            <div class="btn-group-vertical ">
+                                <a href={{ url('/home/products') }}>
+                                    <button type="button" class="btn btn-primary btn-lg">Products:</button>
+                                </a>
+                                <a href="{{ url('/home/category') }}">
+                                    <button type="button" class="btn btn-warning btn-lg">Category</button>
+                                </a>
+                                <a href="{{ url('/home/cart') }}">
+                                    <button type="button" class="btn btn-dark btn-lg">Cart</button>
+                                </a>
+                                @role('admin')
+                                <a href="{{ url('/home/comment') }}">
+                                    <button type="button" class="btn btn-secondary btn-lg">Comment</button>
+                                </a>
+                                <a href="{{ url('/home/users') }}">
+                                    <button type="button" class="btn btn-info btn-lg">Users</button>
+                                </a>
+                            </div>
                             @endrole
                         </div>
                     </div>

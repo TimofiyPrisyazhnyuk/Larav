@@ -17,7 +17,7 @@ class Comment extends Model
 
     public function products()
     {
-        return $this->belongsTo('App\Product', 'id');
+        return $this->belongsTo('App\Product', 'product_id');
     }
 
     /**
@@ -37,9 +37,8 @@ class Comment extends Model
                 }
                 return $getCommentsToId;
             }
-        } else if(!isset($id)) {
-            return $product = Comment::with('products')
-                ->where('checkAdmin', 0)->get();
+        } else if (!isset($id)) {
+            return $product = Comment::with('products')->where('checkAdmin', 0)->get();
         }
         return false;
     }

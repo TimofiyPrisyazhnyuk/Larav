@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Home;
 
 use App\Comment;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class HomeCommentController extends Controller
 {
@@ -16,15 +15,17 @@ class HomeCommentController extends Controller
     {
         $comments = Comment::getCommentsToId();
 
-        return view('home.comments.comments', ['commentsToId' => $comments]);
+        return view('home.comments.comments', [
+            'commentsToId' => $comments,
+        ]);
     }
 
     /**
-     * @param Request $request
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
+     * @internal param Request $request
      */
-    public function changeComment(Request $request, $id)
+    public function changeComment($id)
     {
         if (isset($id)) {
             $changeComment = Comment::where('id', $id)->update([
@@ -41,11 +42,11 @@ class HomeCommentController extends Controller
     }
 
     /**
-     * @param Request $request
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
+     * @internal param Request $request
      */
-    public function deleteComment(Request $request, $id)
+    public function deleteComment($id)
     {
         if (isset($id)) {
             Comment::where('id', $id)->delete();

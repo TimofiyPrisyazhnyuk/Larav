@@ -12,6 +12,11 @@
 */
 
 Route::get('/{id?}', ['uses' => 'Shop\IndexController@index', 'as' => 'index', 'middleware' => ['web']]);
+Route::post('/', ['uses' => 'Shop\IndexController@index', 'as' => 'index', 'middleware' => ['web']]);
+/**
+ *
+ */
+Route::post('/search', ['uses' => 'Shop\IndexController@search', 'as' => 'search']);
 /**
  *
  */
@@ -140,4 +145,4 @@ Route::group(['prefix' => 'home', 'middleware' => ['web', 'auth']], function () 
 
 });
 
-Route::get('/role',['uses' => 'Shop\IndexController@role']);
+//Route::get('/role', ['uses' => 'Shop\IndexController@role']);

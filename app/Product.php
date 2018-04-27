@@ -19,7 +19,7 @@ class Product extends Model
      */
     public function comments()
     {
-        return $this->hasMany('App\Comment', 'product_id', 'id');
+        return $this->hasMany('App\Comment');
     }
 
     /**
@@ -43,7 +43,7 @@ class Product extends Model
      * Get array NameColumn from table products
      * @return array
      */
-    public static function getColumnNameProducts()
+    public function getColumnNameProducts()
     {
         $columnName = [];
         $column = Product::first();
@@ -61,24 +61,34 @@ class Product extends Model
      * @param null $id
      * @return array
      */
-    public static function getFullProducts($id = null)
+    public function getFullProducts($id = null)
     {
         if (!is_null($id)) {
-            $getProducts = Product::orderBy('id', 'desc')
+            return Product::orderBy('id', 'desc')
                 ->where('category_id', '=', $id)
-                ->get();
+                ->paginate(6);
         } else {
-            $getProducts = Product::orderBy('id', 'desc')
-                ->get();
+            return Product::orderBy('id', 'desc')
+                ->paginate(6);
         }
-        return $getProducts;
+    }
+
+
+    public function searchProduct($search)
+    {
+        if ($search) {
+            return $search = Product::orderBy('id', 'desc')
+                ->like($search)
+                ->paginate(6);
+        }
+        return false;
     }
 
     /**
      * Get products from table Recommend
      * @return array
      */
-    public static function getRecommendProducts()
+    public function getRecommendProducts()
     {
         $products = [];
         $getProducts = Product::orderBy('price', 'asc')
@@ -94,7 +104,7 @@ class Product extends Model
      * Get Category_id from table category
      * @return array
      */
-    public static function getIdAllCategories()
+    public function getIdAllCategories()
     {
         $category_id = [];
         $category = Category::select('id')
@@ -113,7 +123,7 @@ class Product extends Model
      * Get user_id from table Users
      * @return array
      */
-    public static function getIdAllUsers()
+    public function getIdAllUsers()
     {
         $user_id = [];
         $users = Auth::user()->getArrayableAttributes();

@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Timofiy Prisyazhnyuk">
+    <meta name="_token" content="{{csrf_token()}}"/>
     <title>Главная</title>
     <link href="{{ url('css/shop/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ url('css/shop/price-range.css') }}" rel="stylesheet">
@@ -12,6 +13,7 @@
     <link href="{{ url('css/shop/animate.css') }}" rel="stylesheet">
     <link href="{{ url('css/shop/main.css') }}" rel="stylesheet">
     <link href="{{ url('css/shop/responsive.css') }}" rel="stylesheet">
+
     <!--[if lt IE 9]>
     <script src="js/shop/html5shiv.js"></script>
     <![endif]-->
@@ -60,7 +62,10 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="/"><img src="{{ url('images/home/logo.png') }}" alt=""/></a>
+                        <a class="text-success" href="{{ url('/') }}">
+                            <img src="{{ url('images/home/laravel.jpg') }}" alt=""
+                                 style="width: 350px; height: 150px;"/>
+                        </a>
                     </div>
                 </div>
                 <div class="col-sm-8">
@@ -69,8 +74,8 @@
                             <li>
                                 <a href="{{ url('/cart') }}">Корзина
                                     <span class="badge">
-                                            {{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}
-                                        </span>
+                                        {{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}
+                                    </span>
                                 </a>
                             </li>
                             <li><a href="{{ url('/home') }}"><i class="fa fa-user"></i> Аккаунт</a></li>
@@ -102,7 +107,7 @@
                 </div>
             </div>
             {{-- Test site mark--}}
-            <div class="alert alert-danger alert-dismissible" role="alert">
+            <div class=" col-md-8 alert alert-danger alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
                 <strong>This site works in a test mode and for educational purposes!</strong>
@@ -132,10 +137,9 @@
                                     <li>
                                         <a href="{{ url('/cart') }}">Корзина
                                             <span class="badge">
-                                                    {{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}
-                                                </span>
+                                                {{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}
+                                            </span>
                                         </a>
-
                                     </li>
                                 </ul>
                             </li>
@@ -144,6 +148,7 @@
                             <li><a href="/contact">Контакты</a></li>
                         </ul>
                     </div>
+                    @yield('search')
                 </div>
             </div>
         </div>
@@ -176,7 +181,7 @@
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="{{ url('images/home/iframe1.png') }}" alt=""/>
+                                    <img src="{{ url('images/home/movie.png') }}" alt=""/>
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>
@@ -191,7 +196,7 @@
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="{{ url('images/home/iframe2.png') }}" alt=""/>
+                                    <img src="{{ url('images/home/movie.png') }}" alt=""/>
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>
@@ -206,7 +211,7 @@
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="{{ url('images/home/iframe3.png') }}" alt=""/>
+                                    <img src="{{ url('images/home/movie.png') }}" alt=""/>
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>
@@ -221,7 +226,7 @@
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="{{ url('images/home/iframe4.png') }}" alt=""/>
+                                    <img src="{{ url('images/home/movie.png') }}" alt=""/>
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>
@@ -234,8 +239,7 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="address">
-                        <img src="{{ url('images/home/map.png') }}" alt=""/>
-                        <p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
+                        <img src="{{ url('images/home/email.png') }}" alt="" style="width: 200px;"/>
                     </div>
                 </div>
             </div>
@@ -327,6 +331,7 @@
 <script src="{{ url('js/shop/price-range.js') }}"></script>
 <script src="{{ url('js/shop/main.js') }}"></script>
 <script src="{{ url('js/shop/price-range.js') }}"></script>
+@yield('js')
 {{--<script src="{{ url('js/shop/contact.js') }}"></script>--}}
 </body>
 </html>

@@ -29,12 +29,11 @@ class HomeProductController extends Controller
      */
     public function index()
     {
-        $columnName = Product::getColumnNameProducts();
-        $products = Product::getFullProducts();
+        $products = new Product();
 
         return view('home.products.products', [
-            'columnName' => $columnName,
-            'products' => $products,
+            'columnName' => $products->getColumnNameProducts(),
+            'products' => $products->getFullProducts(),
         ]);
 
     }
@@ -44,13 +43,12 @@ class HomeProductController extends Controller
      */
     public function createProducts()
     {
-        $user_id = Product::getIdAllUsers();
-        $category_id = Product::getIdAllCategories();
-        $message = [
-            'category_id' => $category_id,
-            'user_id' => $user_id,
-        ];
-        return view('home.products.create', $message);
+        $product = new Product();
+
+        return view('home.products.create', [
+            'category_id' => $product->getIdAllUsers(),
+            'user_id' => $product->getIdAllCategories(),
+        ]);
     }
 
     /**
@@ -103,23 +101,20 @@ class HomeProductController extends Controller
     /**
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     *
      */
     public function updateShow($id)
     {
+        $product = new Product();
         $getUpdatesData = Product::getProductToId($id);
         $photoPatch = CheckIfPhoto::CheckIfPhoto($getUpdatesData);
-        $user_id = Product::getIdAllUsers();
-        $category_id = Product::getIdAllCategories();
 
-        $message = [
+        return view('home.products.update', [
             'id' => $id,
             'getUpdatesData' => $getUpdatesData,
-            'category_id' => $category_id,
-            'user_id' => $user_id,
+            'category_id' => $product->getIdAllCategories(),
+            'user_id' => $product->getIdAllUsers(),
             'photoPatch' => $photoPatch,
-        ];
-        return view('home.products.update', $message);
+        ]);
     }
 
     /**

@@ -33,7 +33,8 @@
                                 <p>В целом : {{ $comment->finally }}</p>
                             </div>
                             <div class="alert alert-danger">
-                                <p> Product id: {{ $comment->products->id }} , Product name: {{ $comment->products->name }}</p>
+                                <p> Product id: {{ $comment->products->id }} , Product
+                                    name: {{ $comment->products->name }}</p>
                             </div>
                         </div>
                         <div class="col-md-2 float-right " style="top:80px;">

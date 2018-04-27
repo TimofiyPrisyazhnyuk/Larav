@@ -84,8 +84,17 @@
                             </td>
                         </tr>
                     @endif
+
                     </tbody>
                 </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="float-right">
+                    {{ $products->links() }}
+
+                </div>
             </div>
         </div>
     </div>

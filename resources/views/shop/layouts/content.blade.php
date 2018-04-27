@@ -17,7 +17,6 @@
                                 @endif
 
                             </a>
-                            {{--<img src="" alt="" />--}}
                             <h2>{{  $product->price . ' ' . $product->currency }}</h2>
                             <p>{{ $product->name }}</p>
                             <a href="{{url('/cart/add/'. $product->id) }}" class="btn btn-default add-to-cart"><i
@@ -27,8 +26,12 @@
                 </div>
             </div>
         @endforeach
-
     </div><!--features_items-->
+
+    <div class="col-sm-offset-4">
+        {{ $products->links() }}
+    </div>
+
     <div class="recommended_items"><!--recommended_items-->
         <h2 class="title text-center">Рекомендуемые товары</h2>
         <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
@@ -40,7 +43,6 @@
                                 <div class="single-products">
                                     <div class="productinfo text-center">
                                         <a href="{{ url('/product/'. $recommend['id']) }}">
-
                                             @if((File::exists("uploads/images/".$recommend['image'])) && $recommend['image'] != null)
                                                 <img src="{{ url('uploads/images/' . $recommend['image']) }}"
                                                      style="width: 200px; height: 200px">
@@ -48,7 +50,6 @@
                                                 <img src="{{ url('uploads/images/default.png') }}"
                                                      style="width: 200px; height: 200px">
                                             @endif
-
                                         </a>
                                         <h2>{{ $recommend['price'] . ' ' . $recommend['currency'] }}</h2>
                                         <p> {{ $recommend['name'] }}</p>
@@ -101,5 +102,4 @@
             </a>
         </div>
     </div><!--/recommended_items-->
-
 </div>

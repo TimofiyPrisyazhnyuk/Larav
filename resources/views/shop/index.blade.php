@@ -2,7 +2,7 @@
 
 @section('search')
     <div class="float-right">
-        <form class="navbar-form navbar-right" role="search" action="{{ url('/') }}" method="post">
+        <form class="navbar-form navbar-right" role="search" action="{{ url('/') }}" method="get">
             @csrf
             <div class="form-group">
                 <input type="text" class="form-control" name="search" value="" placeholder="Найти">

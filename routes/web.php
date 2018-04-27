@@ -12,7 +12,7 @@
 */
 
 Route::get('/{id?}', ['uses' => 'Shop\IndexController@index', 'as' => 'index', 'middleware' => ['web']]);
-Route::post('/', ['uses' => 'Shop\IndexController@index', 'as' => 'index', 'middleware' => ['web']]);
+//Route::post('/', ['uses' => 'Shop\IndexController@index', 'as' => 'index', 'middleware' => ['web']]);
 /**
  *
  */

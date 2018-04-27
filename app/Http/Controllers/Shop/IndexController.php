@@ -31,7 +31,6 @@ class IndexController extends Controller
     {
         if (view()->exists('shop.index')) {
             $products = new Product();
-//            $getProducts = false;
 
             if ($search = $request->search) {
                 $getProducts = $products->searchProduct($search);
@@ -59,15 +58,6 @@ class IndexController extends Controller
         return (isset($category)) ? $category : false;
 
     }
-
-
-//    public function search(Request $request)
-//    {
-//        $search = $request->search;
-//        if ($search) {
-//           return redirect()->action('Shop\IndexController@index');
-//        }
-//    }
 
     /**
      * @param $id

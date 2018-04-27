@@ -73,12 +73,15 @@ class Product extends Model
         }
     }
 
-
+    /**
+     * @param $search
+     * @return bool
+     */
     public function searchProduct($search)
     {
         if ($search) {
             return $search = Product::orderBy('id', 'desc')
-                ->like($search)
+                ->where('name', 'like', "%$search%")
                 ->paginate(6);
         }
         return false;

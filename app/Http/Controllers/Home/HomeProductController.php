@@ -46,8 +46,8 @@ class HomeProductController extends Controller
         $product = new Product();
 
         return view('home.products.create', [
-            'category_id' => $product->getIdAllUsers(),
-            'user_id' => $product->getIdAllCategories(),
+            'category_id' => $product->getIdAllCategories(), $product->getIdAllUsers(),
+            'user_id' => $product->getIdAllUsers(),
         ]);
     }
 

@@ -11,14 +11,14 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group row">
-                                <label for="login"
-                                       class="col-sm-4 col-form-label text-md-right">{{ __('Login') }}</label>
+                                <label for="login" class="col-sm-4 col-form-label text-md-right">
+                                    {{ __('Login') }}
+                                </label>
 
                                 <div class="col-md-6">
                                     <input id="login" type="text"
                                            class="form-control{{ $errors->has('login') ? ' is-invalid' : '' }}"
                                            name="login" value="{{ old('login') }}" required autofocus>
-
                                     @if ($errors->has('login'))
                                         <span class="invalid-feedback">
                                         <strong>{{ $errors->first('login') }}</strong>
@@ -26,11 +26,10 @@
                                     @endif
                                 </div>
                             </div>
-
-
                             <div class="form-group row">
-                                <label for="password"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-right">
+                                    {{ __('Password') }}
+                                </label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -44,7 +43,6 @@
                                     @endif
                                 </div>
                             </div>
-
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-4">
                                     <div class="checkbox">
@@ -55,7 +53,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">

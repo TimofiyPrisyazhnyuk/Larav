@@ -56,7 +56,7 @@ class User extends Authenticatable
      * @param $id
      * @return bool
      */
-    public static function getUserToId($id)
+    public static function getUserToId(int $id)
     {
         $user = User::where('id', $id)->get();
         foreach ($user as $us) {

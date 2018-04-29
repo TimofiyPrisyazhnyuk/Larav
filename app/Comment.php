@@ -36,7 +36,7 @@ class Comment extends Model
      * @param $id
      * @return array|bool
      */
-    public static function getCommentsToId($id = null)
+    public static function getCommentsToId(int $id = null)
     {
         $getCommentsToId = [];
         if (isset($id)) {

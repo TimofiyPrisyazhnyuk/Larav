@@ -11,7 +11,7 @@ class Permission extends EntrustPermission
      * @param $id
      * @return array|bool
      */
-    public function checkPermission($id)
+    public function checkPermission(int $id)
     {
         $permissionsUser = [];
         $user = User::getUserToId($id);

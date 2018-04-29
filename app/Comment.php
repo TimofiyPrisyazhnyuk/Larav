@@ -14,7 +14,14 @@ class Comment extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id', 'name', 'comment', 'assessment', 'finally', 'product_id', 'checkAdmin'];
+    protected $fillable = [
+        'name',
+        'comment',
+        'assessment',
+        'finally',
+        'product_id',
+        'checkAdmin',
+    ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -22,7 +29,7 @@ class Comment extends Model
 
     public function products()
     {
-        return $this->belongsTo('App\Product', 'product_id');
+        return $this->belongsTo('App\Product', 'product_id', 'id');
     }
 
     /**
@@ -33,7 +40,8 @@ class Comment extends Model
     {
         $getCommentsToId = [];
         if (isset($id)) {
-            $product = Product::with('comments')->where('id', $id)->get();
+            $product = Product::with('comments')
+                ->where('id', $id)->get();
             if ($product != null) {
                 foreach ($product as $comment) {
                     if (!empty($comment->comments[0])) {
@@ -43,7 +51,8 @@ class Comment extends Model
                 return $getCommentsToId;
             }
         } else if (!isset($id)) {
-            return $product = Comment::with('products')->where('checkAdmin', 0)->get();
+            return $product = Comment::with('products')
+                ->where('checkAdmin', 0)->get();
         }
         return false;
     }

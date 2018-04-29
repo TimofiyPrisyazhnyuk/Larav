@@ -17,7 +17,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id', 'name', 'login', 'password', 'email',
+        'name',
+        'login',
+        'password',
+        'email',
     ];
 
     /**
@@ -26,7 +29,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -34,13 +38,13 @@ class User extends Authenticatable
      */
     public function products()
     {
-        return $this->hasMany('App\Product');
+        return $this->hasMany('App\Product','user_id','id');
     }
 
     /**
      * @return bool
      */
-    public static function getUser()
+    public static function getAuthUser()
     {
         $user = User::where('name', Auth::user()->name)->get();
         foreach ($user as $us) {

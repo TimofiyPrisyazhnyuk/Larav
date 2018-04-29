@@ -22,7 +22,7 @@ class ContactController extends Controller
             $validator = Validator::make($request->all(), $messages);
 
             if ($validator->fails()) {
-                //                dump($validator->errors()->all());
+                dump($validator->errors()->all());
             }
         }
 

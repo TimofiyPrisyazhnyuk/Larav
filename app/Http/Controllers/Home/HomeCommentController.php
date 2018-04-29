@@ -53,8 +53,6 @@ class HomeCommentController extends Controller
             return redirect()->back()
                 ->with('messageSuccess', 'Comments is Deleted')->withInput();
         }
-        return redirect()->back()
-            ->with('messageWarning', 'Comments not Deleted')->withInput();
     }
 
 }

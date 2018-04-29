@@ -17,14 +17,22 @@ class Product extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id', 'name', 'text', 'price', 'currency', 'image', 'category_id', 'user_id'];
+    protected $fillable = [
+        'name',
+        'text',
+        'price',
+        'currency',
+        'image',
+        'category_id',
+        'user_id'
+    ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function comments()
     {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany('App\Comment','product_id','id');
     }
 
     /**

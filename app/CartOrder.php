@@ -15,8 +15,14 @@ class CartOrder extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'name', 'email', 'phoneNumber', 'deliveryMethod', 'city',
-        'totalQty', 'totalPrice',
+        'id',
+        'name',
+        'email',
+        'phoneNumber',
+        'deliveryMethod',
+        'city',
+        'totalQty',
+        'totalPrice',
     ];
 
     /**
@@ -24,7 +30,7 @@ class CartOrder extends Model
      */
     public function orderCartProduct()
     {
-        return $this->belongsTo('App\OrderCartProduct:class');
+        return $this->belongsTo('App\OrderCartProduct:class','product_id','id');
     }
 
     /**

@@ -8,23 +8,14 @@ class Role extends EntrustRole
 {
 
     /**
-     * @return bool|\Illuminate\Database\Eloquent\Collection|static[]
-     */
-    public function getAllRole()
-    {
-        $role = Role::all();
-        return (isset($role)) ? $role : false;
-    }
-
-    /**
      * @param $id
      * @return array|bool
      */
-    public function checkRole($id)
+    public function checkRole( int $id)
     {
         $roleUser = [];
         $user = User::getUserToId($id);
-        $role = $this->getAllRole();
+        $role = Role::all();
         if ($role != false) {
             foreach ($role as $item) {
                 if ($user->hasRole($item->name)) {
@@ -41,7 +32,7 @@ class Role extends EntrustRole
      * @param $id
      * @return bool
      */
-    public static function addRole($data, $id)
+    public static function addRole( array $data, int $id)
     {
         $user = User::getUserToId($id);
         if ($user->hasRole($data['role'])) {

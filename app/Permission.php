@@ -8,15 +8,6 @@ class Permission extends EntrustPermission
 {
 
     /**
-     * @return bool|\Illuminate\Database\Eloquent\Collection|static[]
-     */
-    public function getPermission()
-    {
-        $permission = Permission::all();
-        return (isset($permission)) ? $permission : false;
-    }
-
-    /**
      * @param $id
      * @return array|bool
      */
@@ -24,7 +15,7 @@ class Permission extends EntrustPermission
     {
         $permissionsUser = [];
         $user = User::getUserToId($id);
-        $permissions = $this->getPermission();
+        $permissions = Permission::all();
         if ($permissions != false) {
             foreach ($permissions as $item) {
                 if ($user->can($item->name)) {

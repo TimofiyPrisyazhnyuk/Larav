@@ -16,7 +16,10 @@ class OrderCartProduct extends Model
      * @var array
      */
     protected $fillable = [
-        'cart_id', 'product_id', 'price', 'quantity',
+        'cart_id',
+        'product_id',
+        'price',
+        'quantity',
     ];
 
     /**
@@ -24,7 +27,7 @@ class OrderCartProduct extends Model
      */
     public function cartOrders()
     {
-        return $this->hasMany('App\CartOrders:class', 'cart_id');
+        return $this->hasMany('App\CartOrders', 'cart_id','id');
     }
 
     /**

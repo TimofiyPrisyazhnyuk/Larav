@@ -20,8 +20,7 @@ class UploadImageController extends Controller
      * @var string
      */
     public $uploadPath = 'uploads/images';
-
-
+    
     /**
      * @param Request $request
      * @param $id

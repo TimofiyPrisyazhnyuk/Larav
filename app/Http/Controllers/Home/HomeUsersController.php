@@ -40,7 +40,7 @@ class HomeUsersController extends Controller
 
             return view('home.users.updateUser', [
                 'user' => $user,
-                'role' => $role->getAllRole(),
+                'role' => $role->all(),
                 'userPermissions' => $permissions->checkPermission($id),
                 'userRole' => $role->checkRole($id),
             ]);

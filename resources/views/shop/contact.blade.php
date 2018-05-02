@@ -44,31 +44,32 @@
                         <h2 class="title text-center">Get In Touch</h2>
                         <div class="status alert alert-success" style="display: none"></div>
 
+                        @include('layouts.errors')
+                        @include('layouts.session')
 
                         <form id="main-contact-form" class="contact-form row" name="contact-form" method="post"
                               action="{{ route('contact') }}">
-                            {{ csrf_field() }}
+                            @csrf
                             <div class="form-group col-md-6">
                                 <input type="text" name="name" class="form-control" required="required"
-                                       placeholder="Name" value="{{old('name')}}">
+                                       placeholder="Name" value="{{ old('name') }}">
                             </div>
                             <div class="form-group col-md-6">
                                 <input type="email" name="email" class="form-control" required="required"
-                                       placeholder="Email" value="{{old('email')}}">
+                                       placeholder="Email" value="{{ old('email') }}">
                             </div>
                             <div class="form-group col-md-12">
                                 <input type="text" name="subject" class="form-control" required="required"
-                                       placeholder="Subject" value="{{old('subject')}}">
+                                       placeholder="Subject" value="{{ old('subject') }}">
                             </div>
                             <div class="form-group col-md-12">
-                                <textarea name="message" id="message" required="required" class="form-control" rows="8"
-                                          placeholder="Your Message Here">{{old('message')}}</textarea>
+                                <textarea name="mess" id="message" required="required" class="form-control" rows="8"
+                                          placeholder="Your Message Here">{{ old('mess') }}</textarea>
                             </div>
                             <div class="form-group col-md-12">
                                 <input type="submit" name="submit" class="btn btn-primary pull-right" value="Submit">
                             </div>
                         </form>
-
 
                     </div>
                 </div>

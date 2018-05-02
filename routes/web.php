@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/{id?}', ['uses' => 'Shop\IndexController@index', 'middleware' => ['web']])->name('index');
 /**
  *
@@ -19,15 +20,14 @@ Route::post('/search', ['uses' => 'Shop\IndexController@search'])->name('search'
 /**
  *
  */
-Route::get('/contact', ['uses' => 'Shop\ContactController@Contact'])->name('contact');
-Route::post('/contact', ['uses' => 'Shop\ContactController@xxxxxx'])->name('xxxxxxx');
+Route::get('/contact', ['uses' => 'Shop\ContactController@contact'])->name('contact');
+Route::post('/contact', ['uses' => 'Shop\ContactController@send'])->name('send');
 /**
  *
  */
 
 Route::get('/product/{id}', ['uses' => 'Shop\IndexController@product'])->name('product');
 Route::post('/product/comments/{id}', ['uses' => 'Shop\IndexController@comments'])->name('comments');
-
 
 /**
  *
